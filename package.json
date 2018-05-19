@@ -1,0 +1,20 @@
+{
+  "name": "momong",
+  "version": "1.0.0",
+  "description": "Mo Mongo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inquisitivequin/momong.git"
+  },
+  "author": "jerdjurd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inquisitivequin/momong/issues"
+  },
+  "homepage": "https://github.com/inquisitivequin/momong#readme",
+  "dependencies": {}
+}
