@@ -4,7 +4,8 @@
   "description": "Mo Mongo",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "tester": "nodemon --exec 'mocha -R min'"
   },
   "repository": {
     "type": "git",
