@@ -14,7 +14,7 @@ describe('Update user', () => {
 	}
 
 		beforeEach((done) => {
-		jurd = new User({ name: 'jurd' })
+		jurd = new User({ name: 'jurd', postCount: 0 })
 		jurd.save()
 		.then(() => done())
 	})
@@ -39,6 +39,15 @@ describe('Update user', () => {
 	it('Model findByIdAndUpdate', (done) => {
 		asserty(User.findByIdAndUpdate(jurd._id, { name: 'jerdly' }), 
 			'jerdly', done)
+	})
+
+	it('Increment post count', (done) => {
+		User.updateMany({ name: 'jurd' }, { $inc: { postCount: 10 }})
+		.then(() => User.findOne({ name: 'jurd' }))
+		.then((user) => {
+			assert(user.postCount === 10)
+			done()
+		})
 	})
 
 })
