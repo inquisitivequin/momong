@@ -14,7 +14,7 @@ describe('Update user', () => {
 	}
 
 		beforeEach((done) => {
-		jurd = new User({ name: 'jurd', postCount: 0 })
+		jurd = new User({ name: 'jurd', poops: 0 })
 		jurd.save()
 		.then(() => done())
 	})
@@ -42,10 +42,10 @@ describe('Update user', () => {
 	})
 
 	it('Increment post count', (done) => {
-		User.updateMany({ name: 'jurd' }, { $inc: { postCount: 10 }})
+		User.updateMany({ name: 'jurd' }, { $inc: { poops: 10 }})
 		.then(() => User.findOne({ name: 'jurd' }))
 		.then((user) => {
-			assert(user.postCount === 10)
+			assert(user.poops === 10)
 			done()
 		})
 	})
