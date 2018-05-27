@@ -18,4 +18,15 @@ describe('Validation', () => {
 
 		assert( message === 'You\'re name is too short fool! Make it greater than two')
 	})
+
+	it('no invalid records', (done) => {
+		const user = new User({ name: 'aa' })
+		user.save()
+		.catch((err) => {
+			const{ message } = err.errors.name
+
+			assert(message === 'You\'re name is too short fool! Make it greater than two')
+			done()
+		})
+	})
 })
