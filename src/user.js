@@ -12,7 +12,11 @@ const UserSchema = new Schema ({
 		required: [true, 'You need a name fool!']
 	},
 	posts: [PostSchema],
-	poops: Number
+	poops: Number,
+	blogPosts: [{
+		type: Schema.Types.ObjectId,
+		ref: 'blogPost'
+	}]
 })
 
 UserSchema.virtual('postCount').get(function() {
