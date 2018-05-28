@@ -3,11 +3,14 @@ const User = require('../src/user')
 
 describe('Reading users', () => {
 
-	let jurd;
+	let jurd, jerd, jurdly, jurdle;
 
 	beforeEach((done) => {
 		jurd = new User({ name: 'jurd' })
-		jurd.save()
+		jerd = new User({ name: 'jerd' })
+		jurdly = new User({ name: 'jurdly' })
+		jurdle = new User({ name: 'jurdle' })
+		Promise.all([jurd.save(), jerd.save(), jurdly.save(), jurdle.save()])
 			.then(() => done())
 	})
 
@@ -25,5 +28,18 @@ describe('Reading users', () => {
 			assert(user.name === 'jurd')
 			done()
 		})
+	})
+
+	it('skip and limit', (done) => {
+		User.find({})
+		.sort({ name:1 })
+		.skip(1)
+		.limit(2)
+		.then((users) => {
+			assert(users.length === 2)
+			assert(users[0].name === 'jurd')
+			assert(users[1].name === 'jurdle')
+		})
+		done()
 	})
 })
